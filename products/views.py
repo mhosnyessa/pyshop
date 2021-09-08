@@ -1,9 +1,12 @@
+from products.models import Product
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Product
 
 
 def index(request):
-    return HttpResponse('<h1> HelloWorld</h1>')
+    products = Product.objects.all
+    return render(request, 'index.html', {'products': products})
 
 
 def new(request):
